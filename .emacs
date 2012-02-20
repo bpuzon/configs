@@ -3,14 +3,14 @@
 (setq erlang-root-dir "/home/bartek/dev/erl/R15B/lib/erlang/")
 (setq inhibit-splash-screen t)
 (setq exec-path (cons "/home/bartek/dev/erl/R15B/lib/erlang/bin" exec-path))
- (require 'erlang-start)
+(require 'erlang-start)
 
-
+;;Indenting
 (setq indent-tabs-mode nil)
 (setq-default indent-tabs-mode nil)
 
 
-
+;;Look
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
@@ -60,6 +60,7 @@
 (set-face-background 'hl-line "#252525")
 ;; Dont show toolbar
 (tool-bar-mode -1)
+;; Don't highlight selection
 (setq-default transient-mark-mode nil)
 
 ;;Show whitespaces
@@ -76,10 +77,10 @@
 (setq ac-auto-start nil)
 (ac-set-trigger-key "TAB")
 (add-to-list 'ac-dictionary-directories "/home/bartek/.emacs.d/plugins/ac-dict")
+;;Autocomplete shortcuts
 (setq ac-use-menu-map t)
 (define-key ac-menu-map "\C-n" 'ac-next)
 (define-key ac-menu-map "\C-p" 'ac-previous)
-
 ;;Autocomplete-distel
 (require 'auto-complete-distel)
 (defun ac-distel-setup ()
@@ -87,8 +88,19 @@
 (add-hook 'erlang-mode-hook 'ac-distel-setup)
 (add-hook 'erlang-shell-mode-hook 'ac-distel-setup)
 
+;;Flymake
+(require 'erlang-flymake)
+(setq erlang-flymake-get-include-dirs-function
+  'includes-list)
+(setq erlang-flymake-get-code-path-dirs-function
+  'codepath-list)
+
+(defun includes-list ()
+  '("dir1" "dir2"))
+(defun codepath-list ()
+  '("dir1" "dir2"))
 
 
-
-
-
+;;Shortcuts
+(global-set-key (kbd "C-z") 'undo)
+(global-set-key (kbd "M-l") 'goto-line)
