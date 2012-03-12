@@ -1,3 +1,8 @@
+;;Required plugins:
+;Erlang OTP, color-theme, distel, auto-complete-distel
+;
+
+
 ;; Erlang
 (setq load-path (cons  "/home/bartek/dev/erl/R15B/lib/erlang/lib/tools-2.6.6.6/emacs/" load-path))
 (setq erlang-root-dir "/home/bartek/dev/erl/R15B/lib/erlang/")
@@ -9,30 +14,11 @@
 (setq indent-tabs-mode nil)
 (setq-default indent-tabs-mode nil)
 
-
-;;Look
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(default ((t (:stipple nil :background "black" :foreground "grey70" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "unknown" :family "DejaVu Sans Mono"))))
- '(font-lock-builtin-face ((t (:foreground "grey50"))))
- '(font-lock-comment-face ((t (:foreground "darkgreen"))))
- '(font-lock-constant-face ((t (:foreground "grey50"))))
- '(font-lock-doc-face ((t (:foreground "grey50"))))
- '(font-lock-doc-string-face ((t (:foreground "yellow2"))))
- '(font-lock-function-name-face ((t (:foreground "SteelBlue"))))
- '(font-lock-keyword-face ((t (:foreground "red"))))
- '(font-lock-preprocessor-face ((t (:foreground "SteelBlue"))))
- '(font-lock-reference-face ((t (:foreground "LightSkyBlue"))))
- '(font-lock-string-face ((t (:foreground "yellow2"))))
- '(font-lock-type-face ((t (:foreground "violet"))))
- '(font-lock-variable-name-face ((t (:foreground "orange"))))
- '(font-lock-warning-face ((t (:foreground "grey50"))))
- '(isearch ((t (:background "yellow4" :foreground "black"))))
- '(mode-line ((t (:background "grey90" :foreground "black"))))
- '(zmacs-region ((t (:background "grey70" :foreground "black")))))
+(add-to-list 'load-path "~/.emacs.d/")
+(require 'color-theme)
+(load-file "~/.emacs.d/themes/color-theme-tangotango.el")
+(color-theme-initialize)
+(color-theme-tangotango)
 
 
 ;;Distel
@@ -62,6 +48,8 @@
 (tool-bar-mode -1)
 ;; Don't highlight selection
 (setq-default transient-mark-mode nil)
+;; Remove menu bar
+(menu-bar-mode 0)
 
 ;;Show whitespaces
 (require 'whitespace)
@@ -69,14 +57,13 @@
 (global-whitespace-mode t)
 
 ;;Autocomplete
-(add-to-list 'load-path "/home/bartek/.emacs.d/plugins")
-(add-to-list 'load-path "/home/bartek/.emacs.d/")
+(add-to-list 'load-path "~/.emacs.d/plugins")
 (require 'auto-complete-config)
 (ac-config-default)
 (add-to-list 'ac-modes 'erlang-mode)
 (setq ac-auto-start nil)
 (ac-set-trigger-key "TAB")
-(add-to-list 'ac-dictionary-directories "/home/bartek/.emacs.d/plugins/ac-dict")
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/plugins/ac-dict")
 ;;Autocomplete shortcuts
 (setq ac-use-menu-map t)
 (define-key ac-menu-map "\C-n" 'ac-next)
@@ -104,3 +91,4 @@
 ;;Shortcuts
 (global-set-key (kbd "C-z") 'undo)
 (global-set-key (kbd "M-l") 'goto-line)
+
