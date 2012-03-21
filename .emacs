@@ -4,10 +4,10 @@
 
 
 ;; Erlang
-(setq load-path (cons  "/home/bartek/dev/erl/R15B/lib/erlang/lib/tools-2.6.6.6/emacs/" load-path))
-(setq erlang-root-dir "/home/bartek/dev/erl/R15B/lib/erlang/")
+(setq load-path (cons  "/otp/R15B/lib/erlang/lib/tools-2.6.6.6/emacs" load-path))
+(setq erlang-root-dir "/otp/R15B/lib/erlang/")
 (setq inhibit-splash-screen t)
-(setq exec-path (cons "/home/bartek/dev/erl/R15B/lib/erlang/bin" exec-path))
+(setq exec-path (cons "/otp/R15B/lib/erlang/bin" exec-path))
 (require 'erlang-start)
 
 ;;Indenting
@@ -39,13 +39,9 @@
 (column-number-mode t)
 ;; Matching parentheses
 (show-paren-mode t)
-;; Line numbers
-(global-linum-mode 1)
 ;; Highlight current line
 (global-hl-line-mode 1)
 (set-face-background 'hl-line "#252525")
-;; Dont show toolbar
-(tool-bar-mode -1)
 ;; Don't highlight selection
 (setq-default transient-mark-mode nil)
 ;; Remove menu bar
@@ -57,7 +53,7 @@
 (global-whitespace-mode t)
 
 ;;Autocomplete
-(add-to-list 'load-path "~/.emacs.d/plugins")
+(add-to-list 'load-path "~/.emacs.d/")
 (require 'auto-complete-config)
 (ac-config-default)
 (add-to-list 'ac-modes 'erlang-mode)
@@ -92,3 +88,9 @@
 (global-set-key (kbd "C-z") 'undo)
 (global-set-key (kbd "M-l") 'goto-line)
 
+
+;;Not under MAC
+;; Dont show toolbar
+(tool-bar-mode -1)
+;; Line numbers
+(global-linum-mode 1)
