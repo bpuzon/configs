@@ -47,6 +47,10 @@
 ;; Remove menu bar
 (menu-bar-mode 0)
 
+;; Line numbers
+(require 'linum)
+(global-linum-mode 1)
+
 ;;Show whitespaces
 (require 'whitespace)
 (setq whitespace-style '(trailing))
@@ -92,5 +96,3 @@
 ;;Not under MAC
 ;; Dont show toolbar
 (tool-bar-mode -1)
-;; Line numbers
-(global-linum-mode 1)
