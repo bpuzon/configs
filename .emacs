@@ -105,9 +105,11 @@
 (global-set-key (kbd "C-u") 'previous-line)
 (global-unset-key (kbd "C-h"))
 (global-set-key (kbd "C-h") 'backward-char)
-(global-unset-key (kbd "C-h"))
+(global-unset-key (kbd "C-j"))
 (global-set-key (kbd "C-j") 'next-line)
 (global-set-key (kbd "C-k") 'forward-char)
+(global-set-key (kbd "C-M-u") 'backward-paragraph)
+(global-set-key (kbd "C-M-j") 'forward-paragraph)
 
 ;;Not under MAC
 ;; Dont show toolbar
