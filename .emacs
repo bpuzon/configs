@@ -76,23 +76,39 @@
 (add-hook 'erlang-shell-mode-hook 'ac-distel-setup)
 
 ;;Flymake
-(require 'erlang-flymake)
-(setq erlang-flymake-get-include-dirs-function
-  'includes-list)
-(setq erlang-flymake-get-code-path-dirs-function
-  'codepath-list)
+(require 'flymake)
+(defun flymake-erlang-init ()
+  (let* ((temp-file (flymake-init-create-temp-buffer-copy
+		     'flymake-create-temp-inplace))
+	 (local-file (file-relative-name temp-file
+		(file-name-directory buffer-file-name))))
+    (list "path_to_eflymake_script" (list local-file))))
 
-(defun includes-list ()
-  '("dir1" "dir2"))
-(defun codepath-list ()
-  '("dir1" "dir2"))
+(add-to-list 'flymake-allowed-file-name-masks '("\\.erl\\'" flymake-erlang-init))
+
+;;(require 'erlang-flymake)
+;;(setq erlang-flymake-get-include-dirs-function
+;;  'includes-list)
+;;(setq erlang-flymake-get-code-path-dirs-function
+ ;; 'codepath-list)
+
+;;(defun includes-list ()
+;;  '("dir1" "dir2"))
+;;(defun codepath-list ()
+;;  '("dir1" "dir2"))
 
 
 ;;Shortcuts
 (global-set-key (kbd "C-z") 'undo)
 (global-set-key (kbd "M-l") 'goto-line)
-
+(global-set-key (kbd "M-k") 'kill-line)
+(global-set-key (kbd "C-u") 'previous-line)
+(global-unset-key (kbd "C-h"))
+(global-set-key (kbd "C-h") 'backward-char)
+(global-unset-key (kbd "C-h"))
+(global-set-key (kbd "C-j") 'next-line)
+(global-set-key (kbd "C-k") 'forward-char)
 
 ;;Not under MAC
 ;; Dont show toolbar
-(tool-bar-mode -1)
+;;(tool-bar-mode -1)
