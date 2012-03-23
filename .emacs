@@ -110,6 +110,8 @@
 (global-set-key (kbd "C-k") 'forward-char)
 (global-set-key (kbd "C-M-u") 'backward-paragraph)
 (global-set-key (kbd "C-M-j") 'forward-paragraph)
+(global-set-key (kbd "C-M-k") 'forward-word)
+(global-set-key (kbd "C-M-h") 'backward-word)
 
 ;;Not under MAC
 ;; Dont show toolbar
