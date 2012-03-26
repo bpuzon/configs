@@ -98,20 +98,20 @@
 ;;  '("dir1" "dir2"))
 
 
+
 ;;Shortcuts
 (global-set-key (kbd "C-z") 'undo)
 (global-set-key (kbd "M-l") 'goto-line)
 (global-set-key (kbd "M-k") 'kill-line)
-(global-set-key (kbd "C-u") 'previous-line)
-(global-unset-key (kbd "C-h"))
-(global-set-key (kbd "C-h") 'backward-char)
 (global-unset-key (kbd "C-j"))
-(global-set-key (kbd "C-j") 'next-line)
-(global-set-key (kbd "C-k") 'forward-char)
-(global-set-key (kbd "C-M-u") 'backward-paragraph)
-(global-set-key (kbd "C-M-j") 'forward-paragraph)
-(global-set-key (kbd "C-M-k") 'forward-word)
-(global-set-key (kbd "C-M-h") 'backward-word)
+(global-set-key (kbd "C-o") 'previous-line)
+(global-set-key (kbd "C-j") 'backward-char)
+(global-set-key (kbd "C-k") 'next-line)
+(global-set-key (kbd "C-l") 'forward-char)
+(global-set-key (kbd "C-M-o") 'backward-paragraph)
+(global-set-key (kbd "C-M-k") 'forward-paragraph)
+(global-set-key (kbd "C-M-l") 'forward-word)
+(global-set-key (kbd "C-M-j") 'backward-word)
 
 ;;Not under MAC
 ;; Dont show toolbar
